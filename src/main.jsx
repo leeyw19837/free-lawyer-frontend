@@ -1,10 +1,46 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import {StrictMode} from 'react'
+import {createRoot} from 'react-dom/client'
+import {BrowserRouter, Routes, Route} from "react-router";
 import './index.css'
-import App from './App.jsx'
+// import App from './pages/home/App.jsx'
+import Home from './pages/home/index.jsx'
+import About from './pages/about/index.jsx'
+import Login from "./pages/login/index.jsx";
+import BottomNavigation from "./BottomNavigation.jsx";
+import ShowUp from "./pages/showup/index.jsx";
+import AboutGiftPage from "./pages/about/gift.jsx";
+import AboutRelativePage from "./pages/about/relative.jsx";
+import AboutCertificatePage from "./pages/about/certificate.jsx";
+import AboutServicePage from "./pages/about/service.jsx";
+import AboutKnowPage from "./pages/about/know.jsx";
+import AboutRewardsPage from "./pages/about/rewards.jsx";
+import AboutNewsPage from "./pages/about/news.jsx";
+import AboutNoticePage from "./pages/about/notice.jsx";
+import AboutOnlineServicePage from "./pages/about/online-service.jsx";
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+    <StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path="/home" element={<Home/>}/>
+                <Route path="/showup" element={<ShowUp/>}/>
+                <Route path="about">
+                    <Route index element={<About/>}/>
+                    <Route path="gift" element={<AboutGiftPage/>}/>
+                    <Route path="relative" element={<AboutRelativePage/>}/>
+                    <Route path="certificate" element={<AboutCertificatePage/>}/>
+                    <Route path="service" element={<AboutServicePage/>}/>
+
+                    <Route path="know" element={<AboutKnowPage/>}/>
+                    <Route path="rewards" element={<AboutRewardsPage/>}/>
+                    <Route path="news" element={<AboutNewsPage/>}/>
+                    <Route path="notice" element={<AboutNoticePage/>}/>
+                    <Route path="online-service" element={<AboutOnlineServicePage/>}/>
+                </Route>
+            </Routes>
+            <BottomNavigation></BottomNavigation>
+        </BrowserRouter>
+    </StrictMode>,
 )

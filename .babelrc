@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "targets": {
+          "chrome": "49",
+          "ios": "10"
+        }
+      }
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+.rootContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(100vh - 0px);
+    width: 100vw;
+    border: 0px solid red;
+    overflow: hidden;
+    // padding: 1rem;
+}
