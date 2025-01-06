@@ -17,6 +17,8 @@ import AboutRewardsPage from "./pages/about/rewards.jsx";
 import AboutNewsPage from "./pages/about/news.jsx";
 import AboutNoticePage from "./pages/about/notice.jsx";
 import AboutOnlineServicePage from "./pages/about/online-service.jsx";
+import ImportantInfoNotice from "./pages/settings/info-notice.jsx";
+import AccountInfo from "./pages/settings/account-info.jsx";
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
@@ -24,23 +26,31 @@ createRoot(document.getElementById('root')).render(
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path='/login' element={<Login/>}/>
-                <Route path="/home" element={<Home/>}/>
-                <Route path="/showup" element={<ShowUp/>}/>
-                <Route path="about">
-                    <Route index element={<About/>}/>
-                    <Route path="gift" element={<AboutGiftPage/>}/>
-                    <Route path="relative" element={<AboutRelativePage/>}/>
-                    <Route path="certificate" element={<AboutCertificatePage/>}/>
-                    <Route path="service" element={<AboutServicePage/>}/>
 
-                    <Route path="know" element={<AboutKnowPage/>}/>
-                    <Route path="rewards" element={<AboutRewardsPage/>}/>
-                    <Route path="news" element={<AboutNewsPage/>}/>
-                    <Route path="notice" element={<AboutNoticePage/>}/>
-                    <Route path="online-service" element={<AboutOnlineServicePage/>}/>
+                <Route element={<BottomNavigation/>}>
+                    <Route path="/home" element={<Home/>}/>
+                    <Route path="/showup" element={<ShowUp/>}/>
+                    <Route path="about">
+                        <Route index element={<About/>}/>
+                        <Route path="gift" element={<AboutGiftPage/>}/>
+                        <Route path="relative" element={<AboutRelativePage/>}/>
+                        <Route path="certificate" element={<AboutCertificatePage/>}/>
+                        <Route path="service" element={<AboutServicePage/>}/>
+
+                        <Route path="know" element={<AboutKnowPage/>}/>
+                        <Route path="rewards" element={<AboutRewardsPage/>}/>
+                        <Route path="news" element={<AboutNewsPage/>}/>
+                        <Route path="notice" element={<AboutNoticePage/>}/>
+                        <Route path="online-service" element={<AboutOnlineServicePage/>}/>
+                    </Route>
+                </Route>
+
+                <Route path="settings">
+                    <Route path="info-notice" element={<ImportantInfoNotice />}/>
+                    <Route path="account-info" element={<AccountInfo />}/>
                 </Route>
             </Routes>
-            <BottomNavigation></BottomNavigation>
+            {/*<BottomNavigation></BottomNavigation>*/}
         </BrowserRouter>
     </StrictMode>,
 )

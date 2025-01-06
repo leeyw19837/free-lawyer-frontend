@@ -16,8 +16,8 @@
     box-sizing: border-box; // 注意此处
     width: 100%;
     background: #fff;
-    height: 250px;
-    padding: 10px;
+    height: 300px;
+    padding: 20px 16px;
 
     .avatarWrapper {
       display: flex;
@@ -26,21 +26,48 @@
       align-items: center;
       position: relative;
       height: 50%;
-      border: 1px saddlebrown solid;
+      // border: 1px saddlebrown solid;
+      padding: 0 10px;
 
       .avatarImageWrapper {
         display: flex;
         flex-direction: row;
-
       }
 
       .navButton {
         position: absolute;
-        top: 50%;
+        top: 45%;
         right: 10px;
         transform: translateY(-50%);
         cursor: pointer;
         width: 24px;
+      }
+    }
+
+    .mainInfoWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      width: 100%;
+      flex: 1;
+      border-radius: 10px;
+      background: linear-gradient(-65deg, #DB4142, #F65852);
+      color: #fff;
+
+      .infoItemWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        height: 100%;
+        // border: 1px dashed #fff;
+        font-size: 1.3rem;
+
+        .infoItemIcon {
+          width: 2rem;
+          margin-bottom: 6px;
+        }
       }
     }
 
@@ -67,7 +94,7 @@
     height: 250px;
     margin-top: 16px;
     padding: 10px;
-    border: 1px saddlebrown solid;
+    // border: 1px saddlebrown solid;
   }
 
   .title {
@@ -107,5 +134,19 @@
     }
   }
 
+}
 
+.popupContentItemWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  align-items: center;
+  height: 60px;
+  width: calc(100% - 16px);
+  margin-left: 16px;
+  padding-left: 10px;
+  border-bottom: #ccc 1px solid;
+  color: #1d1d1d;
+  font-size: 1.1rem;
 }
