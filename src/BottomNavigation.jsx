@@ -11,7 +11,7 @@ import icMeActive from './assets/ic_me_active.svg';
 
 function BottomNavigation() {
     return (
-        <div style={{height: '100vh', width: '100%'}}>
+        <div style={{height: '100vh', width: '100%', backgroundColor: 'rgba(240, 240, 247, 1)'}}>
             <Outlet/>
             <nav className={styles.rootContainer}>
                 <NavLink className={styles.itemContainer} to="/home">

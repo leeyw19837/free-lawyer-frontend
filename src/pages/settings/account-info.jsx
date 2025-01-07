@@ -1,16 +1,22 @@
 import styles from './account-info.module.scss';
 import PageNavigation from "../../components/page-navigation.jsx";
-import {Toast} from "antd-mobile";
+import {Input, Toast} from "antd-mobile";
+import {useState} from "react";
 
 function AccountInfo() {
+    const [userName, setUserName] = useState("");
     const handleSave = () => {
+        if (!userName) {
+            Toast.show('请填写账户名称后再保存！')
+            return;
+        }
         Toast.show('保存成功！')
     }
     return (
         <div className={styles.rootContainer}>
             <PageNavigation
                 title={'账户信息'}
-                extraButton={<span style={{fontSize: '1.2rem', color:'#0C63FF'}}>保存</span>}
+                extraButton={<span style={{fontSize: '1.4rem', color: '#0C63FF'}}>保存</span>}
                 onExtraButtonClicked={handleSave}
             />
             <div className={styles.titleWrapper}>
@@ -18,7 +24,13 @@ function AccountInfo() {
             </div>
             <div className={styles.contentWrapper}>
                 <span>账户名称</span>
-                <span>{`九月的太阳`}</span>
+                <Input
+                    className={styles.inputWrapper}
+                    style={{'--font-size': '1.4rem', '--text-align': 'right'}}
+                    placeholder={'请输入账户名称'}
+                    value={userName}
+                    onChange={setUserName}
+                />
             </div>
             <div className={styles.contentWrapper}>
                 <span>手机号码</span>

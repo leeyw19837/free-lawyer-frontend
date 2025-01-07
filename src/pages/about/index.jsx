@@ -19,9 +19,10 @@ import icAboutNotice from '../../assets/ic_about_gift.svg' // 消息通知
 import icAboutOnlineService from '../../assets/ic_about_gift.svg' // 在线客服
 
 import {useNavigate} from "react-router";
-import {useState} from "react";
-import {Popup} from "antd-mobile";
-import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {Modal, Popup} from "antd-mobile";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchUser} from "../../redux/userSlice.js";
 
 const settingsList = [
     {
@@ -49,6 +50,18 @@ const settingsList = [
 function AboutPage() {
     const navigate = useNavigate();
     const [isMaskVisible, setIsMaskVisible] = useState(false);
+
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user.user);
+    const status = useSelector(state => state.user.status);
+    const error = useSelector(state => state.user.error);
+
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchUser())
+        }
+    }, [status, dispatch]);
+
     // const currentVersion = useSelector(state => state.version || '1.0.0');
     const currentVersion = '1.0.0';
 
@@ -78,9 +91,6 @@ function AboutPage() {
                 navigate('/about/service');
                 break;
 
-            case 'know':
-                navigate('/about/know');
-                break;
             case 'rewards':
                 navigate('/about/rewards');
                 break;
@@ -103,6 +113,33 @@ function AboutPage() {
         navigate(routePath);
     }
 
+    // 页面弹出模态框
+    const showModal = async (operationType) => {
+        switch (operationType) {
+            case 'know': {
+                const result = await Modal.alert({
+                    title: '关于律携',
+                    content: (
+                        <div style={{padding: '10px'}}>
+                            <p>律携是河南龙文律师事务所以及多家投资机构成立的一家以“互帮互助”文化为核心的网络社群，维护广大人民群众权利和利益的法律援助，为百姓提供的一种低价亲民的全新援助保障形式。</p>
+                            <p>截止目前，已稳定运行<span style={{color: 'red'}}>6年337天</span>，已经累计互助<span
+                                style={{color: 'red'}}>6445人</span>，累计互助金额<span
+                                style={{color: 'red'}}>3.24亿元</span>。赶快一起加入吧！</p>
+                        </div>
+                    ),
+                    showCloseButton: true,
+                    shouldCancelButton: false,
+                })
+                if (result) {
+                    console.log('点击确定')
+                }
+                break;
+            }
+            default:
+                break;
+        }
+    }
+
     // 点击头像弹出
     const onSettingsClicked = () => {
         setIsMaskVisible(true)
@@ -120,8 +157,8 @@ function AboutPage() {
                         justifyContent: 'center',
                         marginLeft: '10px'
                     }}>
-                        <span style={{fontSize: '2rem'}}>用户1</span>
-                        <span style={{fontSize: '1.2rem'}}>编号：24636000</span>
+                        <span style={{fontSize: '2rem'}}>{user?.userName || '-'}</span>
+                        <span style={{fontSize: '1.2rem'}}>编号：{user?.userId || '-'}</span>
                     </div>
                     <img src={icChevronRight} className={styles.navButton}/>
                 </div>
@@ -166,7 +203,7 @@ function AboutPage() {
             <div className={styles.moreServiceInfoWrapper}>
                 <span className={styles.title}>更多服务</span>
                 <div className={styles.content}>
-                    <div className={styles.contentItemWrapper} onClick={() => navigateTo('know')}>
+                    <div className={styles.contentItemWrapper} onClick={() => showModal('know')}>
                         <img src={icAboutKnow} className={styles.contentItemImage}/>
                         <span className={styles.contentItemLabel}>了解律携</span>
                     </div>
@@ -189,6 +226,7 @@ function AboutPage() {
                 </div>
             </div>
 
+            {/*侧边栏弹出*/}
             <Popup
                 visible={isMaskVisible}
                 onMaskClick={() => setIsMaskVisible(false)}

@@ -11,17 +11,6 @@
   color: #030303;
   font-size: 1.4rem;
 
-  .titleWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    // margin-left: 30px;
-    padding: 1rem 2rem;
-    width: calc(100% - 4rem);
-    // border: 1px saddlebrown solid;
-  }
-
   .contentWrapper {
     display: flex;
     flex-direction: row;
@@ -34,7 +23,18 @@
 
     .inputWrapper {
       //border:1px solid red;
-      max-width: 14rem;
+      max-width: 100%;
     }
   }
+
+  .buttonWrapper {
+    display: flex;
+    width: calc(100% - 2rem);
+    // border: 1px dashed red;
+    margin-top: 3rem;
+    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
 }

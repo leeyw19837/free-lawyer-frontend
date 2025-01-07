@@ -3,6 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
   overflow: hidden;
+  font-size: 10px;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -27,8 +28,9 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
+  font-size: 10px;
 }
 
 h1 {
