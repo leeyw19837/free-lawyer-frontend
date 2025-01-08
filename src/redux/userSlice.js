@@ -25,7 +25,12 @@ const userSlice = createSlice({
         status: 'idle',
         error: null,
     },
-    reducers: {},
+    reducers: {
+        setUser: (state, action) => {
+            state.user = action.payload;
+            localStorage.setItem('user', JSON.stringify(state.user));
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(
             fetchUser.pending, (state, action) => {
@@ -36,6 +41,7 @@ const userSlice = createSlice({
             fetchUser.fulfilled, (state, action) => {
                 state.status = 'success';
                 state.user = action.payload.data;
+                localStorage.setItem('user', JSON.stringify(action.payload.data));
             }
         ).addCase(
             fetchUser.rejected, (state, action) => {

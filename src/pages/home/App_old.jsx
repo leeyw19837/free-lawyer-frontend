@@ -1,11 +1,11 @@
 import {useState} from 'react'
 import reactLogo from '../../assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import './App_old.css'
 import {Button} from 'antd-mobile'
 import {useNavigate} from "react-router";
 
-function App() {
+function App_old() {
     const [count, setCount] = useState(0)
     const navigate = useNavigate()
     return (
@@ -37,4 +37,4 @@ function App() {
     )
 }
 
-export default App
+export default App_old

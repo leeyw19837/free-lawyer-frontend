@@ -50,17 +50,22 @@ const settingsList = [
 function AboutPage() {
     const navigate = useNavigate();
     const [isMaskVisible, setIsMaskVisible] = useState(false);
+    const [user, setUser] = useState(localStorage.getItem('user') || {});
 
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user.user);
-    const status = useSelector(state => state.user.status);
-    const error = useSelector(state => state.user.error);
+    // const user = useSelector(state => state.user.user);
+    // const status = useSelector(state => state.user.status);
+    // const error = useSelector(state => state.user.error);
+
+    // useEffect(() => {
+    //     if (status === 'idle') {
+    //         dispatch(fetchUser())
+    //     }
+    // }, [status, dispatch]);
 
     useEffect(() => {
-        if (status === 'idle') {
-            dispatch(fetchUser())
-        }
-    }, [status, dispatch]);
+        setUser(JSON.parse(localStorage.getItem('user')));
+    }, [])
 
     // const currentVersion = useSelector(state => state.version || '1.0.0');
     const currentVersion = '1.0.0';
@@ -143,6 +148,14 @@ function AboutPage() {
     // 点击头像弹出
     const onSettingsClicked = () => {
         setIsMaskVisible(true)
+    }
+
+    // 处理登出操作
+    const handleLogout = () =>{
+        dispatch({
+            type: 'login/logout',
+        })
+        navigate('/login')
     }
 
     return (
@@ -237,7 +250,7 @@ function AboutPage() {
                 position="left"
                 // showCloseButton={true}
             >
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', height: '100vh', position: 'relative'}}>
                     {
                         settingsList.map((item, index) => {
                             return (
@@ -253,6 +266,9 @@ function AboutPage() {
                             )
                         })
                     }
+                    <div className={styles.logoutItemWrapper} onClick={handleLogout}>
+                        登出
+                    </div>
                 </div>
             </Popup>
         </div>

@@ -3,12 +3,37 @@ import icLogoTitle from '../../assets/ic_login_title.png';
 import {Button, Input, Toast} from "antd-mobile";
 import {useEffect, useMemo, useRef, useState} from "react";
 import {throttle1, throttle2} from "../../utils/index.js";
+import {useDispatch, useSelector} from "react-redux";
+import {loginThunk} from "../../redux/loginSlice.js";
+import {useNavigate} from "react-router";
 
 function Login() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const loginData = useSelector(state => state.login.loginData);
+    const status = useSelector(state => state.login.status);
+    const error = useSelector(state => state.login.error);
+
     const [phoneNo, setPhoneNo] = useState('');
     const [verificationCode, setVerificationCode] = useState('');
     const [countDownTimer, setCountDownTimer] = useState(60);
     const [isRunning, setIsRunning] = useState(false);
+    const [loginButtonClicked, setLoginButtonClicked] = useState(false);
+
+    // 登录按钮的loading状态
+    const loading = useMemo(()=>{
+        return loginButtonClicked
+    }, [loginButtonClicked])
+
+    useEffect(() => {
+        if (status === 'success' && loginData.token) {
+            setLoginButtonClicked(false);
+            navigate('/home')
+        } else if (status === 'error') {
+            setLoginButtonClicked(false);
+            Toast.show('登录失败！请稍候重试。' + error?.message)
+        }
+    }, [status, error, navigate])
 
     const startTimer = () => {
         setCountDownTimer(60);
@@ -59,7 +84,13 @@ function Login() {
             Toast.show('请输入验证码!')
             return;
         }
+
         console.log('点击了登录！')
+        setLoginButtonClicked(true);
+        dispatch(loginThunk({
+            phoneNo: phoneNo,
+            verificationCode: verificationCode,
+        }))
     }
 
     return (
@@ -94,7 +125,14 @@ function Login() {
                 </div>
             </div>
 
-            <Button type="primary" onClick={handleLogin} color={'danger'} style={{marginTop:'8rem', width: '90%'}}>
+            <span>{JSON.stringify(loginData)}</span>
+            <Button
+                type="primary"
+                onClick={handleLogin}
+                color={'danger'}
+                style={{marginTop:'8rem', width: '90%'}}
+                loading={loading}
+            >
                 登录
             </Button>
         </div>

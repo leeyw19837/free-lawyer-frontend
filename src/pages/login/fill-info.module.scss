@@ -1,0 +1,106 @@
+.rootContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  // border: 1px solid red;
+  overflow: hidden;
+  background: #efefef;
+  position: relative;
+  // padding: 1rem;
+
+  .titleWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    // border: 1px darkblue dashed;
+    width: 100%;
+    color: #000;
+    font-size: 1.6rem;
+    margin-top: 1.4rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+  }
+
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // border: 1px dashed red;
+    width: 100%;
+    margin-top: 1rem;
+    background: #fff;
+    font-size: 1.4rem;
+
+    .labelWrapper {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      color: #404040;
+    }
+
+    .inputItemWrapper {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      // border: 1px darkblue dashed;
+      padding: 1rem 0;
+      margin-top: 1rem;
+      border-bottom: 1px solid #eee;
+      position: relative;
+
+      .verificationWrapper {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        // border: #535bf2 1px dashed;
+      }
+    }
+
+  }
+
+  .chargeWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: #fff;
+    width: calc(100vw - 4rem);
+    padding: 2rem;
+    margin-top: 1rem;
+
+    .selectChargeFeeWrapper {
+      width: 33%;
+      // height: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #FFFFFF;
+      box-shadow: 0px 4px 14px 4px rgba(0,0,0,0.08);
+      border-radius: 9px;
+      border: 2px solid #FF0000;
+      padding: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .confirmButton{
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    width: 90%;
+  }
+}
