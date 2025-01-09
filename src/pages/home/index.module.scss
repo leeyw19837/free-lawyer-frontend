@@ -3,9 +3,291 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 8rem);
   width: 100vw;
   // border: 1px solid red;
   overflow: auto;
-  padding: 10px 0 70px 0 ;
+  padding: 0px 0 8rem 0;
+  position: relative;
+
+  .bannerWrapper {
+    width: 100%;
+    background: #fff;
+
+    .bannerImage {
+      width: 100%;
+    }
+
+    .bannerTextWrapper {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      width: 100%;
+      // border: 1px dashed #fff;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .principleWrapper {
+    width: 100%;
+    // border: 1px dashed red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fff;
+
+    .titleWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 1rem;
+      width: calc(100% - 2rem);
+
+      .indicator {
+        width: 4px;
+        height: 80%;
+        background: #F95C55;
+      }
+
+      .title {
+        font-weight: bold;
+        color: #030303;
+        font-size: 1.6rem;
+        margin-left: 0.8rem;
+      }
+    }
+
+    .heartWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% - 2rem);
+      padding: 1rem;
+      // border: 1px dashed red;
+
+      .heartShape {
+        width: 16rem;
+      }
+
+      .textWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: #666;
+        line-height: 2.6rem;
+        margin-left: 2rem;
+      }
+    }
+
+    .qualificationWrapper {
+      width: calc(100% - 2rem);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+
+      .qualificationItemWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        // border: 1px darkblue dashed;
+
+        .iconWrapper {
+          width: 3rem;
+          color: #666;
+          margin-bottom: 0.6rem;
+        }
+      }
+    }
+
+    .planWrapper {
+      margin: 2rem;
+      // height: 10rem;
+      width: calc(100% - 4rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // border: 1px darkblue dashed;
+      box-shadow: 0px 4px 14px 4px rgba(0, 0, 0, 0.15);
+      border-radius: 17px;
+
+      .planTitle {
+        width: 100%;
+        // height: 2rem;
+        font-size: 1.8rem;
+        padding: 1rem 2rem;
+        box-sizing: border-box;
+        border-bottom: 1px solid #dbdbdb;
+      }
+
+      .planContent {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        width: calc(100% - 2rem);
+        height: 100%;
+
+        .placeholderBlock {
+          width: 11rem;
+          height: 11rem;
+          border-radius: 6px;
+          background: #e1e1e1;
+        }
+
+        .planDetailWrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          flex: 1;
+          color: #808080;
+          line-height: 2.4rem;
+          margin-left: 1.2rem;
+
+          .styledButton {
+            background: linear-gradient(-65deg, #DB4142, #F65852);
+            border-radius: 28px;
+            color: #fff;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+
+  .caseWrapper {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    margin-top: 1rem;
+    background: #fff;
+    // border: 1px dashed red;
+
+    .caseShowUpWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      width: calc(100% - 2rem);
+      padding: 1rem;
+      // border: 1px dashed red;
+
+      .blockedHeartShape {
+        width: 16rem;
+      }
+
+      .caseTextWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: #202020;
+        line-height: 2.6rem;
+        margin-left: 2rem;
+
+        .styledButton2 {
+          background: #FFEAEA;
+          border-radius: 25px;
+          width: 16rem;
+          margin-top: 0.8rem;
+          text-align: center;
+          border: 1px solid #FF0000;
+          font-size: 1.4rem;
+          color: #f54139;
+        }
+      }
+    }
+
+    .caseVideoWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% - 2rem);
+      padding: 1rem;
+      border: 1px solid #dbdbdb;
+      margin-top: 1rem;
+    }
+  }
+
+  .bottomWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: #f9f9f9;
+    width: 100%;
+    // border: 1px dashed red;
+    margin-top: 1rem;
+
+    .itemWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      // height: 10rem;
+
+      .descTitleWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 10rem;
+        padding-left: 0.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        // height: 100%;
+        color: #989898;
+
+        .iconWrapper2 {
+          width: 2rem;
+          margin-right: 0.8rem;
+        }
+      }
+
+      .descContentWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        flex: 1;
+        color: #666;
+        padding-left: 2rem;
+        border-left: 1px #dfdfdf solid;
+      }
+
+      .descContentWrapper2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex: 1;
+        padding-left: 2rem;
+        border-left: 1px #dfdfdf solid;
+
+        .logoWrapper {
+          width: 5rem;
+        }
+      }
+    }
+  }
 }

@@ -28,7 +28,9 @@ function Login() {
     useEffect(() => {
         if (status === 'success' && loginData.token) {
             setLoginButtonClicked(false);
-            navigate('/home')
+            Toast.show('登录成功！')
+            // navigate('/home')
+            navigate('/fill-info')
         } else if (status === 'error') {
             setLoginButtonClicked(false);
             Toast.show('登录失败！请稍候重试。' + error?.message)
@@ -133,7 +135,7 @@ function Login() {
                 style={{marginTop:'8rem', width: '90%'}}
                 loading={loading}
             >
-                登录
+                确定
             </Button>
         </div>
     )

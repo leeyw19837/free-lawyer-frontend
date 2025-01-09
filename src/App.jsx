@@ -17,11 +17,12 @@ import AccountInfo from "./pages/settings/account-info.jsx";
 import ChangePwd from "./pages/settings/change-pwd.jsx";
 import {useSelector} from "react-redux";
 import FillInfoPage from "./pages/login/fill-info.jsx";
+import MyPlan from "./pages/standalone/my-plan.jsx";
 
 export default function App() {
     return (
         <Routes>
-            <Route path='/' exact element={<Navigate to={'/home'} />} />
+            <Route path='/' exact element={<Navigate to={'/home'}/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/fill-info' element={<FillInfoPage/>}/>
 
@@ -103,6 +104,12 @@ export default function App() {
                     </RequireAuth>
                 }/>
             </Route>
+
+            <Route path="/join-certification" element={
+                <RequireAuth>
+                    <MyPlan/>
+                </RequireAuth>
+            }/>
         </Routes>
     )
 }
@@ -111,7 +118,7 @@ function RequireAuth(props) {
     let location = useLocation();
     // const token = useSelector(state => state.login.loginData?.token);
     const token = localStorage.getItem("token");
-    console.log(token);
+    // console.log(token);
     if (!token) {
         return <Navigate to="/login" state={{from: location}} replace={true}/>
     }

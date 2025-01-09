@@ -74,13 +74,13 @@ function AboutPage() {
     const navigateTo = (operationType) => {
         switch (operationType) {
             case 'join-certification':
-                navigate('/about/join-certification');
+                navigate('/join-certification');
                 break;
             case 'report-suitcase':
-                navigate('/about/report-suitcase');
+                navigate('/report-suitcase');
                 break;
             case 'charge':
-                navigate('/about/charge');
+                navigate('/charge');
                 break;
 
             case 'gift':
@@ -267,7 +267,7 @@ function AboutPage() {
                         })
                     }
                     <div className={styles.logoutItemWrapper} onClick={handleLogout}>
-                        登出
+                        退出登录
                     </div>
                 </div>
             </Popup>
