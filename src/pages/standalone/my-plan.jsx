@@ -3,7 +3,7 @@ import PageNavigation from "../../components/page-navigation.jsx";
 import {useNavigate} from "react-router";
 
 import ic_avatar from "../../assets/ic_avatar.svg";
-import {Button, List, PullToRefresh, SearchBar, Tabs} from "antd-mobile";
+import {Button, List, Modal, PullToRefresh, SearchBar, Tabs} from "antd-mobile";
 import {useCallback, useEffect, useRef, useState} from "react";
 
 import icPlanNormal from "../../assets/ic_plan_normal.svg";
@@ -89,6 +89,11 @@ function MyPlan() {
         console.log('handleSearch called:', searchInputValue);
     }
 
+    // 监听批量充值
+    const handleBatchCharge = () => {
+        console.log('handleBatchCharge called',);
+    }
+
     return (
         <div className={styles.rootContainer}>
             <PageNavigation
@@ -146,6 +151,9 @@ function MyPlan() {
                                     </List>
                                 </div>
                             </PullToRefresh>
+                            <div className={styles.batchChargeWrapper} onClick={handleBatchCharge}>
+                                批量充值
+                            </div>
                         </Tabs.Tab>
                     ))
                 }
@@ -156,11 +164,53 @@ function MyPlan() {
 
 // 有效 - item
 const ValidItem = function (props) {
+    const navigate = useNavigate();
     const {id, balance, userName, userId} = props || {};
 
     // 监听查看详情
     const handleViewDetail = (itemId) => {
         console.log('handleViewDetail called:', itemId);
+        navigate(`/plan-detail/${itemId}`, {
+            state: {
+                id: itemId,
+            },
+            // replace: true,
+            params: {
+                id: itemId,
+            }
+        })
+    }
+
+    // 监听查看提示说明
+    const handleViewInstructions = async () => {
+        const result = await Modal.alert({
+            title: '提示说明',
+            content: (
+                <div style={{padding: '1rem 0.2rem', borderTop: '1px solid #ccc'}}>
+                    <p>为避免您忘记充值而失去保障，设置以下提示：</p>
+                    {
+                        Object.keys(tipInfoMap).map((key) => (
+                            <div
+                                key={key}
+                                className={styles.instructionItemWrapper}
+                            >
+                                <img src={tipInfoMap[key]['icon']} className={styles.iconContainer}/>
+                                <div className={styles.infoContainer}>
+                                    <span>{tipInfoMap[key]['title']}</span>
+                                    <span>{tipInfoMap[key]['description']}</span>
+                                </div>
+                            </div>
+                        ))
+                    }
+
+                </div>
+            ),
+            showCloseButton: true,
+            shouldCancelButton: false,
+        })
+        if (result) {
+            console.log('点击确定')
+        }
     }
 
     let tipInfo = balance >= 25
@@ -182,7 +232,11 @@ const ValidItem = function (props) {
                 <div className={styles.indicator}>5年版</div>
             </div>
             <div className={styles.detailWrapper}>
-                <img src={tipInfo.icon} className={styles.iconWrapper}/>
+                <img
+                    src={tipInfo.icon}
+                    className={styles.iconWrapper}
+                    onClick={handleViewInstructions}
+                />
                 <div className={styles.infoWrapper}>
                     <span style={{fontSize: '1.4rem', color: '#313131'}}>¥<span
                         style={{fontSize: '2.4rem'}}>{balance.toFixed(2)}</span></span>

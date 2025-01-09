@@ -18,6 +18,7 @@ import ChangePwd from "./pages/settings/change-pwd.jsx";
 import {useSelector} from "react-redux";
 import FillInfoPage from "./pages/login/fill-info.jsx";
 import MyPlan from "./pages/standalone/my-plan.jsx";
+import PlanDetail from "./pages/standalone/plan-detail.jsx";
 
 export default function App() {
     return (
@@ -110,6 +111,12 @@ export default function App() {
                     <MyPlan/>
                 </RequireAuth>
             }/>
+            <Route path="/plan-detail/:id" element={
+                <RequireAuth>
+                    <PlanDetail/>
+                </RequireAuth>
+            }/>
+
         </Routes>
     )
 }
