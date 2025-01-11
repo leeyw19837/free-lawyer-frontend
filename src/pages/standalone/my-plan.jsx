@@ -30,7 +30,7 @@ const tabs = [
     }
 ]
 
-const tipInfoMap = {
+export const tipInfoMap = {
     'normal': {
         icon: icPlanNormal,
         title: '余额正常',
@@ -122,6 +122,7 @@ function MyPlan() {
                     '--active-line-height': '4px',
                     '--active-line-color': '#F75A53',
                     '--active-title-color': '#F75A53',
+                    '--content-padding': '0rem',
                 }}
             >
                 {
@@ -202,7 +203,6 @@ const ValidItem = function (props) {
                             </div>
                         ))
                     }
-
                 </div>
             ),
             showCloseButton: true,

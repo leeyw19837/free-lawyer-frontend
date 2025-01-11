@@ -19,6 +19,7 @@ import {useSelector} from "react-redux";
 import FillInfoPage from "./pages/login/fill-info.jsx";
 import MyPlan from "./pages/standalone/my-plan.jsx";
 import PlanDetail from "./pages/standalone/plan-detail.jsx";
+import BillDetail from "./pages/standalone/bill-detail.jsx";
 
 export default function App() {
     return (
@@ -114,6 +115,11 @@ export default function App() {
             <Route path="/plan-detail/:id" element={
                 <RequireAuth>
                     <PlanDetail/>
+                </RequireAuth>
+            }/>
+            <Route path="/bill-detail/:id" element={
+                <RequireAuth>
+                    <BillDetail/>
                 </RequireAuth>
             }/>
 
