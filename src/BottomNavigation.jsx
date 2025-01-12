@@ -1,10 +1,10 @@
 import {NavLink, Outlet} from "react-router";
 import styles from "./BottomNavigation.module.scss";
-import icMainPage from './assets/ic_me.svg';
-import icMainPageActive from './assets/ic_me_active.svg';
+import icMainPage from './assets/ic_main_page.svg';
+import icMainPageActive from './assets/ic_main_page_active.svg';
 
-import icShowUp from './assets/ic_me.svg';
-import icShowUpActive from './assets/ic_me_active.svg';
+import icShowUp from './assets/ic_case_showup.svg';
+import icShowUpActive from './assets/ic_case_showup_active.svg';
 
 import icMe from './assets/ic_me.svg';
 import icMeActive from './assets/ic_me_active.svg';

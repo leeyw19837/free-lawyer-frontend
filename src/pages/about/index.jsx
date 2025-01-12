@@ -4,19 +4,23 @@ import icAvatar from '../../assets/ic_about_avatar.svg';
 import icChevronRight from '../../assets/ic_chevron_right.svg';
 
 import icAboutJoinCertification from '../../assets/ic_about_join_certification.svg' // 加入凭证
-import icAboutReportSuitcase from '../../assets/ic_about_join_certification.svg' // 报案
-import icAboutCharge from '../../assets/ic_about_join_certification.svg' // 充值
+import icAboutReportSuitcase from '../../assets/ic_about_report_suitcase.svg' // 报案
+import icAboutCharge from '../../assets/ic_about_charge.svg' // 充值
 
 import icAboutGift from '../../assets/ic_about_gift.svg' // 邀请有礼
-import icAboutRelative from '../../assets/ic_about_gift.svg' // 为亲友加入
-import icAboutCertificate from '../../assets/ic_about_gift.svg' // 荣誉证书
-import icAboutService from '../../assets/ic_about_gift.svg' // 服务
+import icAboutRelative from '../../assets/ic_about_relative.svg' // 为亲友加入
+import icAboutCertificate from '../../assets/ic_about_certificate.svg' // 荣誉证书
+import icAboutService from '../../assets/ic_about_service.svg' // 服务
 
-import icAboutKnow from '../../assets/ic_about_gift.svg' // 了解律携
-import icAboutRewards from '../../assets/ic_about_gift.svg' // 律携荣誉
-import icAboutNews from '../../assets/ic_about_gift.svg' // 新闻公告
-import icAboutNotice from '../../assets/ic_about_gift.svg' // 消息通知
-import icAboutOnlineService from '../../assets/ic_about_gift.svg' // 在线客服
+import icAboutKnow from '../../assets/ic_about_know.svg' // 了解律携
+import icAboutRewards from '../../assets/ic_about_rewards.svg' // 律携荣誉
+import icAboutNews from '../../assets/ic_about_news.svg' // 新闻公告
+import icAboutNotice from '../../assets/ic_about_notice.svg' // 消息通知
+import icAboutOnlineService from '../../assets/ic_about_online_service.svg' // 在线客服
+
+import icAboutImportantNotice from '../../assets/ic_about_important_notice.svg' // 重要消息通知方式
+import icAboutAccountInfo from '../../assets/ic_account_info.svg' // 账户信息
+import icAboutChangePassword from '../../assets/ic_about_change_password.svg' // 修改密码
 
 import {useNavigate} from "react-router";
 import {useEffect, useState} from "react";
@@ -27,17 +31,17 @@ import {fetchUser} from "../../redux/userSlice.js";
 const settingsList = [
     {
         title: '重要信息通知方式',
-        icon: icAboutOnlineService,
+        icon: icAboutImportantNotice,
         routePath: '/settings/info-notice'
     },
     {
         title: '账户信息',
-        icon: icAboutOnlineService,
+        icon: icAboutAccountInfo,
         routePath: '/settings/account-info'
     },
     {
         title: '修改密码',
-        icon: icAboutOnlineService,
+        icon: icAboutChangePassword,
         routePath: '/settings/change-pwd'
     },
     {

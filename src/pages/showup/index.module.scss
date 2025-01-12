@@ -3,9 +3,126 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 6rem);
   width: 100vw;
   // border: 1px solid red;
   overflow: auto;
-  padding: 10px 0 70px 0 ;
+  padding: 0px 0 6rem 0;
+  background: #fff;
+
+  .listWrapper {
+    display: flex;
+    box-sizing: border-box;
+    padding: 1rem 1rem 0 1rem;
+    flex-direction: column;
+    width: calc(100vw - 0rem);
+    overflow: auto;
+    height: calc(100vh - 6.1rem);
+    // border: 1px solid red;
+
+    .groupWrapper {
+      margin-top: 1rem;
+
+      .groupHeader {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        // border: 1px dashed red;
+
+        .mainTitle {
+          color: #010101;
+          font-weight: bold;
+          font-size: 2rem;
+        }
+
+        .subTitle {
+          color: #999;
+          font-size: 1.4rem;
+        }
+
+      }
+    }
+  }
+
+  .listItemWrapper {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 4rem);
+    box-sizing: border-box;
+    padding: 1rem 0;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px 4px rgba(0,0,0,0.15);
+    border-radius: 17px;
+    // height: 20rem;
+    margin: 1rem;
+
+    .contentWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      color: #808080;
+      position: relative;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+
+      .topWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        font-weight: bold;
+        color: #030303;
+
+        .avatarWrapper {
+          width: 8rem;
+          background-clip: border-box;
+          border-radius: 0.75rem;
+          // box-shadow: 0px 4px 14px 4px rgba(0,0,0,0.15);
+          border: 1px solid rgba(0,0,0,0.35);
+        }
+
+        .infoWrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          margin-left: 1rem;
+          line-height: 2.4rem;
+          height: 100%;
+
+          .cWrapper {
+            color: #808080;
+            font-weight: normal;
+          }
+        }
+      }
+
+      .bottomWrapper {
+        margin-top: 1rem;
+      }
+
+      .statusWrapper {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 7rem;
+      }
+    }
+
+    .footerWrapper {
+      height: 3.4rem;
+      width: 100%;
+      border-top: 1px solid #E1E1E1;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: #2582FD;
+    }
+  }
 }
