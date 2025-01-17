@@ -139,15 +139,16 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        padding: 1rem;
+        padding: 2rem 1rem;
         width: calc(100% - 2rem);
         height: 100%;
 
         .placeholderBlock {
           width: 11rem;
-          height: 11rem;
-          border-radius: 6px;
-          background: #e1e1e1;
+          background-clip: border-box;
+          border-radius: 0.75rem;
+          // box-shadow: 0px 4px 14px 4px rgba(0,0,0,0.15);
+          border: 1px solid rgba(0,0,0,0.35);
         }
 
         .planDetailWrapper {
@@ -285,7 +286,8 @@
         border-left: 1px #dfdfdf solid;
 
         .logoWrapper {
-          width: 5rem;
+          height: 4rem;
+          margin-left: 1rem;
         }
       }
     }

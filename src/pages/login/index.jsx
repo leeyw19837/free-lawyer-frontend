@@ -135,7 +135,7 @@ function Login() {
                 style={{marginTop:'8rem', width: '90%'}}
                 loading={loading}
             >
-                确定
+                确认
             </Button>
         </div>
     )

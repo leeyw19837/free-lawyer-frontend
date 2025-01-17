@@ -127,10 +127,10 @@ function AboutPage() {
         switch (operationType) {
             case 'know': {
                 const result = await Modal.alert({
-                    title: '关于律携',
+                    title: '关于免费请律师',
                     content: (
                         <div style={{padding: '10px'}}>
-                            <p>律携是河南龙文律师事务所以及多家投资机构成立的一家以“互帮互助”文化为核心的网络社群，维护广大人民群众权利和利益的法律援助，为百姓提供的一种低价亲民的全新援助保障形式。</p>
+                            <p>免费请律师是河南龙文律师事务所以及多家投资机构成立的一家以“互帮互助”文化为核心的网络社群，维护广大人民群众权利和利益的法律援助，为百姓提供的一种低价亲民的全新援助保障形式。</p>
                             <p>截止目前，已稳定运行<span style={{color: 'red'}}>6年337天</span>，已经累计互助<span
                                 style={{color: 'red'}}>6445人</span>，累计互助金额<span
                                 style={{color: 'red'}}>3.24亿元</span>。赶快一起加入吧！</p>
@@ -222,11 +222,11 @@ function AboutPage() {
                 <div className={styles.content}>
                     <div className={styles.contentItemWrapper} onClick={() => showModal('know')}>
                         <img src={icAboutKnow} className={styles.contentItemImage}/>
-                        <span className={styles.contentItemLabel}>了解律携</span>
+                        <span className={styles.contentItemLabel}>了解免费请律师</span>
                     </div>
                     <div className={styles.contentItemWrapper} onClick={() => navigateTo('rewards')}>
                         <img src={icAboutRewards} className={styles.contentItemImage}/>
-                        <span className={styles.contentItemLabel}>律携荣誉</span>
+                        <span className={styles.contentItemLabel}>免费请律师荣誉</span>
                     </div>
                     <div className={styles.contentItemWrapper} onClick={() => navigateTo('news')}>
                         <img src={icAboutNews} className={styles.contentItemImage}/>
