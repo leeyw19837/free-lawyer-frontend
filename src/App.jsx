@@ -19,7 +19,7 @@ import {useSelector} from "react-redux";
 import FillInfoPage from "./pages/login/fill-info.jsx";
 import MyPlan from "./pages/standalone/my-plan.jsx";
 import PlanDetail from "./pages/standalone/plan-detail.jsx";
-import BillDetail from "./pages/standalone/bill-detail.jsx";
+import ShowupDetail from "./pages/showup/showup-detail.jsx";
 
 export default function App() {
     return (
@@ -29,16 +29,23 @@ export default function App() {
             <Route path='/fill-info' element={<FillInfoPage/>}/>
 
             <Route element={<BottomNavigation/>}>
+                {/*主页相关页面*/}
                 <Route path="/home" element={
                     <RequireAuth>
                         <Home/>
                     </RequireAuth>
                 }/>
-                <Route path="/showup" element={
-                    <RequireAuth>
-                        <ShowUp/>
-                    </RequireAuth>
-                }/>
+
+                {/*公示相关页面*/}
+                <Route path="showup">
+                    <Route index element={
+                        <RequireAuth>
+                            <ShowUp/>
+                        </RequireAuth>
+                    }/>
+                </Route>
+
+                {/*我的相关页面*/}
                 <Route path="about">
                     <Route index element={
                         <RequireAuth>
@@ -112,14 +119,16 @@ export default function App() {
                     <MyPlan/>
                 </RequireAuth>
             }/>
+            {/*计划-详情*/}
             <Route path="/plan-detail/:id" element={
                 <RequireAuth>
                     <PlanDetail/>
                 </RequireAuth>
             }/>
-            <Route path="/bill-detail/:id" element={
+            {/*公示-详情*/}
+            <Route path="/showup-detail/:id" element={
                 <RequireAuth>
-                    <BillDetail/>
+                    <ShowupDetail />
                 </RequireAuth>
             }/>
 

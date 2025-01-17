@@ -4,8 +4,10 @@ import {List, PullToRefresh} from "antd-mobile";
 import dayjs from "dayjs";
 import icShowupOngoing from '../../assets/ic_showup_onging.svg';
 import icShowupAvatar from '../../assets/ic_showup_avatar.png';
+import {useNavigate} from "react-router";
 
 function ShowUpPage() {
+    const navigate = useNavigate();
     const [listData, setListData] = useState([]);
 
     const fetchData = useCallback(async () => {
@@ -68,6 +70,12 @@ function ShowUpPage() {
         fetchData();
     }, [])
 
+    // 查看详情
+    const handleViewDetail = (id) => {
+        console.log('handleViewDetail called: id = ' + id);
+        navigate(`/showup-detail/${id}`);
+    }
+
     return (
         <div className={styles.rootContainer}>
             <PullToRefresh onRefresh={fetchData}>
@@ -87,7 +95,11 @@ function ShowUpPage() {
                                                 return (
                                                     <List.Item key={innerIndex}>
                                                         {
-                                                            <ListItem {...innerItem}/>
+                                                            <ListItem
+                                                                {...innerItem}
+                                                                id={`${outerIndex}-${innerIndex}`}
+                                                                handleViewDetail={handleViewDetail}
+                                                            />
                                                         }
                                                     </List.Item>
                                                 )
@@ -106,7 +118,7 @@ function ShowUpPage() {
 }
 
 const ListItem = function (props) {
-    const {userName, reason, fee, date, detail} = props || {};
+    const {id, userName, reason, fee, date, detail, handleViewDetail} = props || {};
     return (
         <div className={styles.listItemWrapper}>
             <div className={styles.contentWrapper}>
@@ -124,7 +136,7 @@ const ListItem = function (props) {
                 </div>
                 <img src={icShowupOngoing} className={styles.statusWrapper} />
             </div>
-            <div className={styles.footerWrapper}>
+            <div className={styles.footerWrapper} onClick={() => handleViewDetail(id)}>
                 <span>查看详情</span>
             </div>
         </div>

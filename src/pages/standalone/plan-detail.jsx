@@ -120,7 +120,7 @@ function PlanDetail() {
                 {/*律携互助计划*/}
                 <div className={styles.mutualWrapper}>
                     <div className={styles.mutualItemWrapper}>
-                        <span style={{fontSize: '1.6rem', fontWeight: 'bold'}}>律携互助计划</span>
+                        <span style={{fontSize: '1.6rem', fontWeight: 'bold'}}>免费请律师互助计划</span>
                         <div className={styles.indicator}>60元 5年版</div>
                     </div>
                     <div className={styles.mutualItemWrapper}>
