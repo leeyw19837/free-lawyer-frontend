@@ -14,8 +14,8 @@ function Login() {
     const status = useSelector(state => state.login.status);
     const error = useSelector(state => state.login.error);
 
-    const [phoneNo, setPhoneNo] = useState('');
-    const [verificationCode, setVerificationCode] = useState('');
+    const [phoneNo, setPhoneNo] = useState('13912345678');
+    const [verificationCode, setVerificationCode] = useState('1234');
     const [countDownTimer, setCountDownTimer] = useState(60);
     const [isRunning, setIsRunning] = useState(false);
     const [loginButtonClicked, setLoginButtonClicked] = useState(false);
@@ -127,7 +127,7 @@ function Login() {
                 </div>
             </div>
 
-            <span>{JSON.stringify(loginData)}</span>
+            {/*<span>{JSON.stringify(loginData)}</span>*/}
             <Button
                 type="primary"
                 onClick={handleLogin}

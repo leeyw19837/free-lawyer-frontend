@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import babel from 'vite-plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -8,11 +7,14 @@ export default defineConfig({
       react(),
       // babel()
   ],
-  publicPath: '/',
+  publicPath: '/freelawyer',
   devServer: {
     port: 9000,
     proxy: {
 
     }
   },
+  build: {
+    outDir: 'freelawyer',
+  }
 })

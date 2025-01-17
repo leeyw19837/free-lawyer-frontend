@@ -7,8 +7,8 @@ import {useNavigate} from "react-router";
 export default function FillInfoPage() {
     const navigate = useNavigate();
 
-    const [name, setName] = useState('');
-    const [idNumber, setIdNumber] = useState('');
+    const [name, setName] = useState('测试用户');
+    const [idNumber, setIdNumber] = useState('132801202001011234');
     const [showCharge, setShowCharge] = useState(false);
     const [loading, setLoading] = useState(false);
     // 点击下一步
