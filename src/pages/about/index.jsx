@@ -91,7 +91,7 @@ function AboutPage() {
                 navigate('/about/gift');
                 break;
             case 'relative':
-                navigate('/about/relative');
+                navigate('/relatives');
                 break;
             case 'certificate':
                 navigate('/about/certificate');

@@ -15,12 +15,14 @@ import icHomeLogoSinaBlog from '../../assets/ic_logo_sina_blog.png';
 import icHomeLogoLongwen from '../../assets/ic_logo_longwen.png';
 
 import {Button} from "antd-mobile";
+import {useNavigate} from "react-router";
 
 
 function HomePage() {
+    const navigate = useNavigate();
     // 监听：为亲友加入
     const handleJoinForRelatives = () => {
-
+        navigate('/relatives');
     }
 
     // 监听：点击查看互助案例公示
@@ -76,7 +78,7 @@ function HomePage() {
                                 style={{color: 'red'}}>30000元</span></span>
                             <span>民事案件10000元</span>
                             <span>刑事案件30000元</span>
-                            <Button className={styles.styledButton}>为亲友加入</Button>
+                            <Button className={styles.styledButton} onClick={handleJoinForRelatives}>为亲友加入</Button>
                         </div>
                     </div>
                 </div>

@@ -23,6 +23,7 @@ import ShowupDetail from "./pages/showup/showup-detail.jsx";
 import ApplicationPage from "./pages/standalone/application/application.jsx";
 import ApplicationForWho from "./pages/standalone/application/application-for-who.jsx";
 import FillInInfo from "./pages/standalone/application/fill-in-info.jsx";
+import JoinForRelatives from "./pages/standalone/join-for-relatives/index.jsx";
 
 export default function App() {
     return (
@@ -58,11 +59,6 @@ export default function App() {
                     <Route path="gift" element={
                         <RequireAuth>
                             <AboutGiftPage/>
-                        </RequireAuth>
-                    }/>
-                    <Route path="relative" element={
-                        <RequireAuth>
-                            <AboutRelativePage/>
                         </RequireAuth>
                     }/>
                     <Route path="certificate" element={
@@ -132,7 +128,7 @@ export default function App() {
             {/*公示-详情*/}
             <Route path="/showup-detail/:id" element={
                 <RequireAuth>
-                    <ShowupDetail />
+                    <ShowupDetail/>
                 </RequireAuth>
             }/>
             {/*报案*/}
@@ -140,19 +136,28 @@ export default function App() {
                 {/*报案-首页*/}
                 <Route index element={
                     <RequireAuth>
-                        <ApplicationPage />
+                        <ApplicationPage/>
                     </RequireAuth>
                 }/>
                 {/*报案-为谁申请*/}
                 <Route path="apply-for-who" element={
                     <RequireAuth>
-                        <ApplicationForWho />
+                        <ApplicationForWho/>
                     </RequireAuth>
                 }/>
                 {/*报案-填写信息*/}
                 <Route path="fill-in-info/:id" element={
                     <RequireAuth>
-                        <FillInInfo />
+                        <FillInInfo/>
+                    </RequireAuth>
+                }/>
+            </Route>
+            {/*为亲友加入*/}
+            <Route path="relatives">
+                {/*为亲友加入-首页*/}
+                <Route index element={
+                    <RequireAuth>
+                        <JoinForRelatives/>
                     </RequireAuth>
                 }/>
             </Route>
