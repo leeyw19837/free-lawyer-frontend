@@ -1,0 +1,128 @@
+.rootContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  // border: 1px solid red;
+  overflow: hidden;
+  background: #F0F0F7;
+  color: #030303;
+  font-size: 1.4rem;
+
+  .detailWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    background: #fff;
+    // border: 1px dashed #030303;
+    border-top: 1px solid #EAEAEA;
+    font-weight: bold;
+  }
+
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    background: #F0F0F7;
+    padding: 1rem 1rem 0rem 1rem;
+    // margin-top: 1rem;
+    width: calc(100% - 2rem);
+
+    .contentTitleWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: .6rem 1rem;
+      color: #010101;
+      box-sizing: border-box;
+    }
+
+    .contentItemWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: 6rem;
+      box-sizing: border-box;
+      // border:1px dashed red;
+      // padding: 1rem;
+      color: #010101;
+
+      .mTitle {
+        width: 10rem;
+        height: 100%;
+        // border: 1px darkblue dashed;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .mContent {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        // width: 100%;
+        flex: 1;
+        height: 100%;
+        // padding: 1rem;
+        border-bottom: 1px #E1E1E1 solid;
+      }
+    }
+
+    .cardWrapper {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      padding: 1rem;
+      margin-top: 1rem;
+      width: calc(100% - 2rem);
+      border-radius: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .agreementWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    margin-bottom: 3rem;
+    // height: 10rem;
+
+    .agreementContent {
+      // width: 100%;
+      padding-left: 2.4rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .itemLabel {
+    color: #030303;
+  }
+
+  .itemValue {
+    color: #5a5a5a;
+  }
+
+  .chargeButton {
+    width: 100%;
+    height: 5rem;
+    background: #F04141;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}

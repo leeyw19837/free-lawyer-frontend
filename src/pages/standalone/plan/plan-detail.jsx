@@ -1,10 +1,11 @@
+// 我的-加入凭证-我的互助计划-计划详情
 import styles from './plan-detail.module.scss'
 import {useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
 import dayjs from "dayjs";
 import {tipInfoMap} from "./my-plan.jsx";
-import ic_avatar from "../../assets/ic_avatar.svg";
-import PageNavigation from "../../components/page-navigation.jsx";
+import ic_avatar from "../../../assets/ic_avatar.svg";
+import PageNavigation from "../../../components/page-navigation.jsx";
 import {CheckCircleFill, RightOutline} from "antd-mobile-icons";
 import {Button} from "antd-mobile";
 

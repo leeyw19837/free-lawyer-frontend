@@ -1,0 +1,117 @@
+.rootContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  // border: 1px solid red;
+  overflow: hidden;
+  background: #fff;
+  color: #030303;
+  font-size: 1.4rem;
+  position: relative;
+
+  .swiperContainer {
+    display: flex;
+    width: 100%;
+    // height: 20rem;
+    // border: 1px darkblue dashed;
+
+    .swiperItemWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+    }
+  }
+
+  .conditionWrapper {
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    // border: 1px darkblue dashed;
+
+    .titleWrapper {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .contentWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      // border: 1px red dashed;
+
+      .contentItemWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        color: #5D5D5D;
+        margin-top: 1.6em;
+
+        .dottedCircle {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 2rem;
+          height: 2rem;
+          border-radius: 2rem;
+          background: #B59788;
+          color: #fff;
+          font-weight: bold;
+          margin-right: 1rem;
+          font-size: 1.4rem;
+          transform: translateY(.2rem);
+        }
+
+        .conditionText {
+          width: 90%;
+        }
+      }
+    }
+  }
+
+  .operationWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    .recordButton {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      color: #5A5A5A;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .applyButton {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex: 1.5;
+      height: 100%;
+      color: #fff;
+      background: #F75A53;
+      cursor: pointer;
+    }
+
+  }
+}

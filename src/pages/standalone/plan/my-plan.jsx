@@ -1,15 +1,16 @@
+// 我的-加入凭证-我的互助计划
 import styles from './my-plan.module.scss'
-import PageNavigation from "../../components/page-navigation.jsx";
+import PageNavigation from "../../../components/page-navigation.jsx";
 import {useNavigate} from "react-router";
 
-import ic_avatar from "../../assets/ic_avatar.svg";
+import ic_avatar from "../../../assets/ic_avatar.svg";
 import {Button, List, Modal, PullToRefresh, SearchBar, Tabs} from "antd-mobile";
 import {useCallback, useEffect, useRef, useState} from "react";
 
-import icPlanNormal from "../../assets/ic_plan_normal.svg";
-import icPlanAlarm from "../../assets/ic_plan_alarm.svg";
-import icPlanEmergency from "../../assets/ic_plan_emergency.svg";
-import icPlanDanger from "../../assets/ic_plan_danger.svg";
+import icPlanNormal from "../../../assets/ic_plan_normal.svg";
+import icPlanAlarm from "../../../assets/ic_plan_alarm.svg";
+import icPlanEmergency from "../../../assets/ic_plan_emergency.svg";
+import icPlanDanger from "../../../assets/ic_plan_danger.svg";
 
 const tabs = [
     {

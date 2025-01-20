@@ -17,9 +17,12 @@ import AccountInfo from "./pages/settings/account-info.jsx";
 import ChangePwd from "./pages/settings/change-pwd.jsx";
 import {useSelector} from "react-redux";
 import FillInfoPage from "./pages/login/fill-info.jsx";
-import MyPlan from "./pages/standalone/my-plan.jsx";
-import PlanDetail from "./pages/standalone/plan-detail.jsx";
+import MyPlan from "./pages/standalone/plan/my-plan.jsx";
+import PlanDetail from "./pages/standalone/plan/plan-detail.jsx";
 import ShowupDetail from "./pages/showup/showup-detail.jsx";
+import ApplicationPage from "./pages/standalone/application/application.jsx";
+import ApplicationForWho from "./pages/standalone/application/application-for-who.jsx";
+import FillInInfo from "./pages/standalone/application/fill-in-info.jsx";
 
 export default function App() {
     return (
@@ -114,6 +117,7 @@ export default function App() {
                 }/>
             </Route>
 
+            {/*加入凭证-计划*/}
             <Route path="/join-certification" element={
                 <RequireAuth>
                     <MyPlan/>
@@ -131,7 +135,27 @@ export default function App() {
                     <ShowupDetail />
                 </RequireAuth>
             }/>
-
+            {/*报案*/}
+            <Route path="report-suitcase">
+                {/*报案-首页*/}
+                <Route index element={
+                    <RequireAuth>
+                        <ApplicationPage />
+                    </RequireAuth>
+                }/>
+                {/*报案-为谁申请*/}
+                <Route path="apply-for-who" element={
+                    <RequireAuth>
+                        <ApplicationForWho />
+                    </RequireAuth>
+                }/>
+                {/*报案-填写信息*/}
+                <Route path="fill-in-info/:id" element={
+                    <RequireAuth>
+                        <FillInInfo />
+                    </RequireAuth>
+                }/>
+            </Route>
         </Routes>
     )
 }
