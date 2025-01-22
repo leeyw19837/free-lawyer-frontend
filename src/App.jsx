@@ -24,6 +24,8 @@ import FillInInfo from "./pages/standalone/application/fill-in-info.jsx";
 import JoinForRelatives from "./pages/standalone/join-for-relatives/index.jsx";
 import BillDetail from "./pages/standalone/plan/bill-detail.jsx";
 import HistoryDonation from "./pages/standalone/plan/history-donation.jsx";
+import ManageChange from "./pages/standalone/plan/manage-change.jsx";
+import PlanTransfer from "./pages/standalone/plan/plan-transfer.jsx";
 
 export default function App() {
     return (
@@ -137,6 +139,18 @@ export default function App() {
                 <Route path="bill-detail/:id" element={
                     <RequireAuth>
                         <BillDetail/>
+                    </RequireAuth>
+                }/>
+                {/*计划-详情-设置更改-管理变更*/}
+                <Route path="manage-change/:id" element={
+                    <RequireAuth>
+                        <ManageChange/>
+                    </RequireAuth>
+                }/>
+                {/*计划-详情-设置更改-管理变更-互助计划转让*/}
+                <Route path="plan-transfer/:id" element={
+                    <RequireAuth>
+                        <PlanTransfer/>
                     </RequireAuth>
                 }/>
             </Route>

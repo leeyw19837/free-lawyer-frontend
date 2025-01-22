@@ -1,8 +1,8 @@
+// 我的-加入凭证-我的互助计划-计划详情-往期捐款
 import styles from './history-donation.module.scss';
 import {useCallback, useEffect, useState} from "react";
 import {PullToRefresh} from "antd-mobile";
 import dayjs from "dayjs";
-import icShowupOngoing from '../../../assets/ic_showup_onging.svg';
 import icShowupAvatar from '../../../assets/ic_showup_avatar.png';
 import icDonateMale from '../../../assets/ic_donate_male.svg';
 import icDonateFemale from '../../../assets/ic_donate_female.svg';

@@ -7,13 +7,22 @@ import {tipInfoMap} from "./my-plan.jsx";
 import ic_avatar from "../../../assets/ic_avatar.svg";
 import PageNavigation from "../../../components/page-navigation.jsx";
 import {CheckCircleFill, RightOutline} from "antd-mobile-icons";
-import {Button} from "antd-mobile";
+import {ActionSheet, Button, Dialog, Input, Modal, Toast} from "antd-mobile";
 
 function PlanDetail() {
     const params = useParams();
     const navigate = useNavigate();
     // console.log('params = ', params)
     const [detailData, setDetailData] = useState({})
+    // 点击设置更改-操作选项 面板显隐状态
+    const [actionVisible, setActionVisible] = useState(false);
+
+    // 设置更改-当前actionType
+    const [actionType, setActionType] = useState('');
+    // 设置更改-对话框
+    const [modifySettingsDialogVisible, setModifySettingsDialogVisible] = useState(false);
+    // 修改名字-value
+    const [modifySettingValue, setModifySettingValue] = useState("");
 
     // todo: 获取详情数据
     useEffect(() => {
@@ -57,6 +66,81 @@ function PlanDetail() {
         fetchData();
     }, []);
 
+    // 点击设置更改-操作选项
+    const actions = [
+        {
+            text: '修改姓名',
+            key: 'modify-name',
+            onClick: () => {
+                setActionVisible(false)
+                setActionType('modify-name');
+                setModifySettingsDialogVisible(true);
+            }
+        },
+        {
+            text: '修改身份证号',
+            key: 'modify-id',
+            onClick: async () => {
+                setActionVisible(false)
+                const result = await Dialog.confirm({
+                    title: '',
+                    content: (
+                        <span style={{fontSize: '1.6rem', fontWeight: 'bold'}}>
+                            修改身份证需要重新计算等待期，确定修改？
+                        </span>
+                    ),
+                })
+                // 确定
+                if (result) {
+                    setActionType('modify-id');
+                    setModifySettingsDialogVisible(true);
+                }
+                // 取消
+                else {
+                    console.log('修改身份证号-canceled')
+                }
+            }
+        },
+        {
+            text: '管理变更',
+            key: 'manage-change',
+            onClick: () => {
+                navigate(`/my-plan/manage-change/${detailData.id}`);
+            }
+        },
+        {
+            text: '退出互助计划',
+            key: 'quit',
+            onClick: async () => {
+                setActionVisible(false);
+                Dialog.show({
+                    content: (
+                        <span style={{fontSize: '1.4rem',}}>
+                            亲，退出后，您将失去5年的律师免费咨询法律服务，以及最高互助30000元的保障权益，真的要放弃权益吗？
+                        </span>
+                    ),
+                    closeOnAction: true,
+                    actions: [
+                        [
+                            {
+                                key: 'cancel',
+                                text: '取消'
+                            },
+                            {
+                                key: 'confirm',
+                                text: '确定',
+                                danger: true,
+                                onClick: () => {
+                                    Toast.show('退出成功！')
+                                }
+                            }
+                        ]
+                    ]
+                })
+            }
+        },
+    ]
+
     // 监听右上角 我的 点击事件
     const handleNavigateToAboutPage = () => {
         navigate("/about");
@@ -72,7 +156,7 @@ function PlanDetail() {
                 navigate(`/my-plan/bill-detail/${params.id}`);
                 break;
             case "settings-modify":
-
+                setActionVisible(true)
                 break;
             default:
                 break;
@@ -169,20 +253,27 @@ function PlanDetail() {
 
                 {/*明细列表入口*/}
                 <div className={styles.mutualWrapper} style={{marginBottom: '1rem'}}>
-                    <div className={styles.mutualItemWrapper}>
+                    <div
+                        className={styles.mutualItemWrapper}
+                        onClick={() => handleNavigateToListView('history-donation')}
+                    >
                         <span className={styles.itemLabel}>往期捐款</span>
-                        <RightOutline className={styles.itemValue}
-                                      onClick={() => handleNavigateToListView('history-donation')}/>
+                        <RightOutline className={styles.itemValue}/>
                     </div>
-                    <div className={styles.mutualItemWrapper}>
+                    <div
+                        className={styles.mutualItemWrapper}
+                        onClick={() => handleNavigateToListView('bill-detail')}
+                    >
                         <span className={styles.itemLabel}>账单明细</span>
-                        <RightOutline className={styles.itemValue}
-                                      onClick={() => handleNavigateToListView('bill-detail')}/>
+                        <RightOutline className={styles.itemValue}/>
                     </div>
-                    <div className={styles.mutualItemWrapper} style={{borderBottom: '0px solid transparent'}}>
+                    <div
+                        className={styles.mutualItemWrapper}
+                        style={{borderBottom: '0px solid transparent'}}
+                        onClick={() => handleNavigateToListView('settings-modify')}
+                    >
                         <span className={styles.itemLabel}>设置更改</span>
-                        <RightOutline className={styles.itemValue}
-                                      onClick={() => handleNavigateToListView('settings-modify')}/>
+                        <RightOutline className={styles.itemValue}/>
                     </div>
                 </div>
 
@@ -190,7 +281,80 @@ function PlanDetail() {
                     充值
                 </Button>
             </div>
+            <ActionSheet
+                actions={actions}
+                visible={actionVisible}
+                cancelText={'取消'}
+                onClose={() => setActionVisible(false)}
+            />
+            <Dialog
+                visible={modifySettingsDialogVisible}
+                forceRender={true}
+                content={
+                    (
+                        <Input
+                            value={modifySettingValue}
+                            placeholder={'请输入'}
+                            onChange={val => setModifySettingValue(val)}
+                            style={{
+                                border: '1px solid #CACACA',
+                                background: '#fff',
+                                borderRadius: '0.5rem',
+                                '--font-size': '1.4rem',
+                                padding: '0.4rem',
+                                boxSizing: 'border-box'
+                            }}
+                        />
+                    )
+                }
+                header={
+                    (
+                        <span style={{
+                            fontSize: '1.6rem',
+                            fontWeight: 'bold'
+                        }}>{actionType === 'modify-name' ? '请输入姓名' : '请输入身份证号'}</span>
+                    )
+                }
+                actions={[
+                    [
+                        {
+                            key: 'cancel',
+                            text: '取消',
+                            onClick: () => setModifySettingsDialogVisible(false),
+                        },
+                        {
+                            key: 'confirm',
+                            text: '确定',
+                            onClick: async () => {
+                                console.log('confirm clicked', modifySettingValue);
+                                const result = await new Promise((resolve, reject) => {
+                                    setTimeout(() => {
+                                        resolve(true)
+                                    }, 1000)
+                                })
+                                if (result) {
+                                    let tipInfo = '修改成功！'
+                                    if (actionType === 'modify-name') {
+                                        tipInfo = '姓名修改成功！'
+                                    } else if (actionType === 'modify-id') {
+                                        tipInfo = '身份证号修改成功！'
+                                    }
+                                    Toast.show(tipInfo)
+                                    setModifySettingsDialogVisible(false);
+                                } else {
+                                    setModifySettingsDialogVisible(false);
+                                }
+                            }
+                        },
+                    ]
 
+                ]}
+                destroyOnClose
+                afterClose={() => {
+                    // setModifySettingsDialogVisible(false)
+                    setModifySettingValue('')
+                }}
+            />
         </div>
     )
 }
