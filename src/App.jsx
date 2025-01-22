@@ -5,7 +5,6 @@ import BottomNavigation from "./BottomNavigation.jsx";
 import ShowUp from "./pages/showup/index.jsx";
 import About from "./pages/about/index.jsx";
 import AboutGiftPage from "./pages/about/gift.jsx";
-import AboutRelativePage from "./pages/about/relative.jsx";
 import AboutCertificatePage from "./pages/about/certificate.jsx";
 import AboutServicePage from "./pages/about/service.jsx";
 import AboutRewardsPage from "./pages/about/rewards.jsx";
@@ -15,7 +14,6 @@ import AboutOnlineServicePage from "./pages/about/online-service.jsx";
 import ImportantInfoNotice from "./pages/settings/info-notice.jsx";
 import AccountInfo from "./pages/settings/account-info.jsx";
 import ChangePwd from "./pages/settings/change-pwd.jsx";
-import {useSelector} from "react-redux";
 import FillInfoPage from "./pages/login/fill-info.jsx";
 import MyPlan from "./pages/standalone/plan/my-plan.jsx";
 import PlanDetail from "./pages/standalone/plan/plan-detail.jsx";
@@ -24,6 +22,8 @@ import ApplicationPage from "./pages/standalone/application/application.jsx";
 import ApplicationForWho from "./pages/standalone/application/application-for-who.jsx";
 import FillInInfo from "./pages/standalone/application/fill-in-info.jsx";
 import JoinForRelatives from "./pages/standalone/join-for-relatives/index.jsx";
+import BillDetail from "./pages/standalone/plan/bill-detail.jsx";
+import HistoryDonation from "./pages/standalone/plan/history-donation.jsx";
 
 export default function App() {
     return (
@@ -114,17 +114,33 @@ export default function App() {
             </Route>
 
             {/*加入凭证-计划*/}
-            <Route path="/join-certification" element={
-                <RequireAuth>
-                    <MyPlan/>
-                </RequireAuth>
-            }/>
-            {/*计划-详情*/}
-            <Route path="/plan-detail/:id" element={
-                <RequireAuth>
-                    <PlanDetail/>
-                </RequireAuth>
-            }/>
+            <Route path="my-plan">
+                {/*加入凭证-计划-首页*/}
+                <Route index element={
+                    <RequireAuth>
+                        <MyPlan/>
+                    </RequireAuth>
+                }/>
+                {/*计划-详情*/}
+                <Route path="plan-detail/:id" element={
+                    <RequireAuth>
+                        <PlanDetail/>
+                    </RequireAuth>
+                }/>
+                {/*计划-详情-往期捐助*/}
+                <Route path="history-donation/:id" element={
+                    <RequireAuth>
+                        <HistoryDonation/>
+                    </RequireAuth>
+                }/>
+                {/*计划-详情-账单明细*/}
+                <Route path="bill-detail/:id" element={
+                    <RequireAuth>
+                        <BillDetail/>
+                    </RequireAuth>
+                }/>
+            </Route>
+
             {/*公示-详情*/}
             <Route path="/showup-detail/:id" element={
                 <RequireAuth>

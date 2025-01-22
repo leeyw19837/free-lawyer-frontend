@@ -77,8 +77,8 @@ function AboutPage() {
     // 导航
     const navigateTo = (operationType) => {
         switch (operationType) {
-            case 'join-certification':
-                navigate('/join-certification');
+            case 'my-plan':
+                navigate('/my-plan');
                 break;
             case 'report-suitcase':
                 navigate('/report-suitcase');
@@ -180,7 +180,7 @@ function AboutPage() {
                     <img src={icChevronRight} className={styles.navButton}/>
                 </div>
                 <div className={styles.mainInfoWrapper}>
-                    <div className={styles.infoItemWrapper} onClick={() => navigateTo('join-certification')}>
+                    <div className={styles.infoItemWrapper} onClick={() => navigateTo('my-plan')}>
                         <img src={icAboutJoinCertification} className={styles.infoItemIcon}/>
                         <span>加入凭证</span>
                     </div>

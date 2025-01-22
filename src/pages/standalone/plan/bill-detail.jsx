@@ -2,8 +2,8 @@ import styles from './bill-detail.module.scss'
 import {useNavigate, useParams} from "react-router";
 import {useCallback, useEffect, useState} from "react";
 import dayjs from "dayjs";
-import ic_avatar from "../../assets/ic_avatar.svg";
-import PageNavigation from "../../components/page-navigation.jsx";
+import ic_avatar from "../../../assets/ic_avatar.svg";
+import PageNavigation from "../../../components/page-navigation.jsx";
 import {List, PullToRefresh, Tabs} from "antd-mobile";
 
 const tabs = [

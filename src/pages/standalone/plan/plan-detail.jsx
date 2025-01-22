@@ -66,10 +66,10 @@ function PlanDetail() {
     const handleNavigateToListView = (operationType) => {
         switch (operationType) {
             case "history-donation":
-
+                navigate(`/my-plan/history-donation/${params.id}`);
                 break;
             case "bill-detail":
-                navigate(`/bill-detail/${params.id}`);
+                navigate(`/my-plan/bill-detail/${params.id}`);
                 break;
             case "settings-modify":
 
@@ -93,11 +93,14 @@ function PlanDetail() {
                 }
                 onExtraButtonClicked={handleNavigateToAboutPage}
             />
-            <div style={{overflow: 'auto', width: '100%', height:'calc(100vh - 10rem)'}}>
+            <div style={{overflow: 'auto', width: '100%', height: 'calc(100vh - 10rem)'}}>
                 {/*详情*/}
                 <div className={styles.detailWrapper}>
                 <span className={styles.balanceWrapper}><span
-                    style={{fontSize: '1.6rem', marginRight: '0.2rem'}}>¥</span>{(detailData?.balance)?.toFixed(2)}</span>
+                    style={{
+                        fontSize: '1.6rem',
+                        marginRight: '0.2rem'
+                    }}>¥</span>{(detailData?.balance)?.toFixed(2)}</span>
                     <img src={detailData?.tipInfo?.icon} className={styles.imageWrapper}/>
                     <span style={{color: '#808080'}}>{detailData?.tipInfo?.title}</span>
                     <div className={styles.tipsWrapper}>
@@ -110,7 +113,8 @@ function PlanDetail() {
                                 >
                                     <img src={tipInfoMap[key]['icon']} className={styles.iconContainer}/>
                                     <div className={styles.infoContainer}>
-                                        <span>{tipInfoMap[key]['title']}{key !== 'danger' && <span>-</span>} {tipInfoMap[key]['description']}</span>
+                                        <span>{tipInfoMap[key]['title']}{key !== 'danger' &&
+                                            <span>-</span>} {tipInfoMap[key]['description']}</span>
                                     </div>
                                 </div>
                             ))
@@ -165,18 +169,21 @@ function PlanDetail() {
 
                 {/*明细列表入口*/}
                 <div className={styles.mutualWrapper} style={{marginBottom: '1rem'}}>
-                    {/*<div className={styles.mutualItemWrapper}>*/}
-                    {/*    <span className={styles.itemLabel}>往期捐款</span>*/}
-                    {/*    <RightOutline className={styles.itemValue} onClick={() => handleNavigateToListView('history-donation')}/>*/}
-                    {/*</div>*/}
+                    <div className={styles.mutualItemWrapper}>
+                        <span className={styles.itemLabel}>往期捐款</span>
+                        <RightOutline className={styles.itemValue}
+                                      onClick={() => handleNavigateToListView('history-donation')}/>
+                    </div>
                     <div className={styles.mutualItemWrapper}>
                         <span className={styles.itemLabel}>账单明细</span>
-                        <RightOutline className={styles.itemValue} onClick={() => handleNavigateToListView('bill-detail')}/>
+                        <RightOutline className={styles.itemValue}
+                                      onClick={() => handleNavigateToListView('bill-detail')}/>
                     </div>
-                    {/*<div className={styles.mutualItemWrapper} style={{borderBottom: '0px solid transparent'}}>*/}
-                    {/*    <span className={styles.itemLabel}>设置更改</span>*/}
-                    {/*    <RightOutline className={styles.itemValue} onClick={() => handleNavigateToListView('settings-modify')}/>*/}
-                    {/*</div>*/}
+                    <div className={styles.mutualItemWrapper} style={{borderBottom: '0px solid transparent'}}>
+                        <span className={styles.itemLabel}>设置更改</span>
+                        <RightOutline className={styles.itemValue}
+                                      onClick={() => handleNavigateToListView('settings-modify')}/>
+                    </div>
                 </div>
 
                 <Button className={styles.chargeButton} onClick={handleCharge}>

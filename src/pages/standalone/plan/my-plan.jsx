@@ -172,7 +172,7 @@ const ValidItem = function (props) {
     // 监听查看详情
     const handleViewDetail = (itemId) => {
         console.log('handleViewDetail called:', itemId);
-        navigate(`/plan-detail/${itemId}`, {
+        navigate(`/my-plan/plan-detail/${itemId}`, {
             state: {
                 id: itemId,
             },

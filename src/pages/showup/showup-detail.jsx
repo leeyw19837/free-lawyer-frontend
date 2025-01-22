@@ -1,10 +1,8 @@
 import styles from './showup-detail.module.scss'
 import {useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
-import dayjs from "dayjs";
-import ic_avatar from "../../assets/ic_avatar.svg";
 import PageNavigation from "../../components/page-navigation.jsx";
-import {CheckCircleFill, ExclamationCircleFill, RightOutline} from "antd-mobile-icons";
+import {ExclamationCircleFill} from "antd-mobile-icons";
 import {Button} from "antd-mobile";
 import icShowupAvatar from "../../assets/ic_showup_avatar.png";
 
@@ -55,23 +53,6 @@ function ShowupDetail() {
         }
         fetchData();
     }, []);
-
-    // 监听 列表跳转事件
-    const handleNavigateToListView = (operationType) => {
-        switch (operationType) {
-            case "history-donation":
-
-                break;
-            case "bill-detail":
-                navigate(`/bill-detail/${params.id}`);
-                break;
-            case "settings-modify":
-
-                break;
-            default:
-                break;
-        }
-    }
 
     // 监听充值点击事件
     const handleCharge = () => {
