@@ -26,6 +26,8 @@ import BillDetail from "./pages/standalone/plan/bill-detail.jsx";
 import HistoryDonation from "./pages/standalone/plan/history-donation.jsx";
 import ManageChange from "./pages/standalone/plan/manage-change.jsx";
 import PlanTransfer from "./pages/standalone/plan/plan-transfer.jsx";
+import ViewCasesPage from "./pages/home/view-cases.jsx";
+import CaseCityPage from "./pages/home/case-city.jsx";
 
 export default function App() {
     return (
@@ -97,6 +99,7 @@ export default function App() {
                 </Route>
             </Route>
 
+            {/*设置*/}
             <Route path="settings">
                 <Route path="info-notice" element={
                     <RequireAuth>
@@ -161,6 +164,7 @@ export default function App() {
                     <ShowupDetail/>
                 </RequireAuth>
             }/>
+
             {/*报案*/}
             <Route path="report-suitcase">
                 {/*报案-首页*/}
@@ -182,12 +186,27 @@ export default function App() {
                     </RequireAuth>
                 }/>
             </Route>
+
             {/*为亲友加入*/}
             <Route path="relatives">
                 {/*为亲友加入-首页*/}
                 <Route index element={
                     <RequireAuth>
                         <JoinForRelatives/>
+                    </RequireAuth>
+                }/>
+            </Route>
+
+            {/*首页-互助案例公示-点击查看*/}
+            <Route path='view-cases'>
+                <Route index element={
+                    <RequireAuth>
+                        <ViewCasesPage />
+                    </RequireAuth>
+                }/>
+                <Route path={'case-city/:provinceIndex'} element={
+                    <RequireAuth>
+                        <CaseCityPage />
                     </RequireAuth>
                 }/>
             </Route>

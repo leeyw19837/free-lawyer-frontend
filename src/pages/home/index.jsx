@@ -27,7 +27,7 @@ function HomePage() {
 
     // 监听：点击查看互助案例公示
     const handleViewCases = () => {
-
+        navigate('/view-cases');
     }
 
     return (
@@ -91,7 +91,7 @@ function HomePage() {
                     <div className={styles.caseTextWrapper}>
                         <span>已经有<span style={{color: 'red'}}>6445人</span>获得帮助</span>
                         <span>已互助<span style={{color: 'red'}}>3.24亿元</span></span>
-                        <Button className={styles.styledButton2}>点击查看</Button>
+                        <Button className={styles.styledButton2} onClick={handleViewCases}>点击查看</Button>
                     </div>
                 </div>
                 <div className={styles.caseVideoWrapper}>
