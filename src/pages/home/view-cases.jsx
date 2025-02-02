@@ -35,20 +35,34 @@ function ViewCasesPage() {
             <PageNavigation
                 title={`免费请律师案例`}
             />
-            <img src={currentIndex === 0 ? bgMain : bgCommon}
-                 style={{position: 'absolute', left: 0, top: '5rem', height: '100%', width: '100%'}}/>
-            <Swiper
-                direction="vertical"
-                style={{'--height': "100vh"}}
-                onIndexChange={index => {
-                    setCurrentIndex(index)
-                }}
-            >
-                {mainItem}
-                {swiperItems(0, currentIndex, null, null, onItemClicked)}
-                {swiperItems(12, currentIndex, null, null, onItemClicked)}
-                {swiperItems(24, currentIndex, handleJoinPlan, handleShare, onItemClicked)}
-            </Swiper>
+            <div style={{position: 'relative', height: 'calc(100vh - 5rem)'}}>
+                <img src={currentIndex === 0 ? bgMain : bgCommon}
+                     style={{position: 'absolute', top: 0, left: 0, height: '100%', width: '100%'}}/>
+                <Swiper
+                    direction="vertical"
+                    style={{'--height': "100vh"}}
+                    onIndexChange={index => {
+                        setCurrentIndex(index)
+                    }}
+                    indicatorProps={{
+                        style: {
+                            '--active-dot-border-radius': '1rem',
+                            '--active-dot-color': 'red',
+                            '--dot-color': '#fff',
+                            '--dot-size': '10px',
+                            '--active-dot-size': '1rem',
+                            '--dot-border-radius': '50%',
+                            '--dot-spacing': '8px',
+                        }
+                    }}
+                >
+                    {mainItem}
+                    {swiperItems(0, currentIndex, null, null, onItemClicked)}
+                    {swiperItems(12, currentIndex, null, null, onItemClicked)}
+                    {swiperItems(24, currentIndex, handleJoinPlan, handleShare, onItemClicked)}
+                </Swiper>
+            </div>
+
         </div>
     )
 }

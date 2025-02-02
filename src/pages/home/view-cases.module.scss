@@ -9,6 +9,7 @@
   overflow: hidden;
   color: #030303;
   font-size: 1.4rem;
+  position: relative;
 
   .mainContentWrapper {
     width: calc(100% - 4rem);
@@ -36,7 +37,7 @@
       font-weight: bold;
       font-size: 3.2rem;
       line-height: 6rem;
-      margin-top: 15rem;
+      margin-top: 12rem;
     }
 
     .instructionWrapper {
